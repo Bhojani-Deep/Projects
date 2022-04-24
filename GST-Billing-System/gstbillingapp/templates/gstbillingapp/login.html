@@ -1,0 +1,53 @@
+{% extends "gstbillingapp/base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<div class="row">
+<div class="col-sm">
+</div>
+<div class="col-sm">
+	<div class="card" id="login-card">
+		<h5 class="card-header">Login and Start Billing Now!</h5>
+		<div class="card-body">
+		<!-- <h5 class="card-title">Login </h5>
+			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>  -->
+			<a href="{% url "social:begin" "google-oauth2" %}" class="btn btn-warning">Login with Google</a>
+			<a href="{% url "social:begin" "Gmail-oauth2" %}" class="btn btn-info">Login with Mail</a>
+		</div>
+		
+		<div><a href="{% url 'signup_view' %}"><input class="btn btn-success" value="Sign Up"></a></div>
+		<br>
+		<div>OR</div>
+		<form method="POST">
+			{% csrf_token %}
+			<table class="table">
+				<tbody class="two-col-form">
+					<tr>
+						<th scope="row" class="text-right">Username:</th>
+						<td class="form-input-td">{{auth_form.username}}</td>
+					</tr>`
+					<tr>
+						<th scope="row" class="text-right">Password:</th>
+						<td class="form-input-td">{{auth_form.password}}</td>
+					</tr>
+				</tbody>
+			</table>
+		    
+			<div class="row">
+			<div class="col-md-12">
+			<input type="submit" class="btn btn-primary" value="Submit">
+			</div>
+		    </div>
+		</form>
+
+		
+	</div>
+		
+	</div>
+<div class="col-sm">
+</div>
+</div>
+{% endblock %}
